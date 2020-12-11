@@ -21,6 +21,11 @@ class MyComponent extends Component {
     }
 
     async deploy(inputs) {
+
+        this.help(inputs, {
+            description: `Usage: s ${inputs.Project.ProjectName} deploy [command]`,
+        })
+
         const client = await this.getClient(inputs.Credentials)
 
         await this.init()
@@ -124,6 +129,11 @@ class MyComponent extends Component {
     }
 
     async remove(inputs) {
+
+        this.help(inputs, {
+            description: `Usage: s ${inputs.Project.ProjectName} remove [command]`,
+        })
+
         const client = await this.getClient(inputs.Credentials)
 
         await this.init()
