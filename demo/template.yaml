@@ -1,0 +1,8 @@
+MyFunctionDemo:
+  Component: ros
+  Provider: alibaba
+  Access: release
+  Properties:
+    Region: cn-hangzhou
+    Name: test
+    Template: ./temp.json

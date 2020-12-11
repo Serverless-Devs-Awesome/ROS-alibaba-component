@@ -1,0 +1,89 @@
+Type: Component
+Name: ros
+Provider:
+  - Alibaba
+Version: 0.0.1
+Description:
+  zh: 通过阿里云 ROS 部署项目
+  en: Deploying projects through Alibaba cloud ROS
+HomePage: https://www.aliyun.com
+Tags:
+  - zh: ROS
+    en: ROS
+Category: 基础云服务
+Service:
+  - Name: 其他
+    Authorities: #权限描述
+      - zh: ROS 全部权限
+        en: ROS all rights
+Commands: # 指令，格式为指令：指令描述，例如：
+  deploy:
+    zh: 创建ROS
+    en: Create ROS
+  remove:
+    zh: 删除ROS
+    en: Remove ROS
+Properties:
+  Region:
+    Description:
+      zh: 地域
+      en: Region
+    Required: true
+    Type:
+      - Enum:
+          - cn-beijing
+          - cn-hangzhou
+          - cn-shanghai
+          - cn-qingdao
+          - cn-zhangjiakou
+          - cn-huhehaote
+          - cn-shenzhen
+          - cn-chengdu
+          - cn-hongkong
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-southeast-3
+          - ap-southeast-5
+          - ap-northeast-1
+          - eu-central-1
+          - eu-west-1
+          - us-west-1
+          - us-east-1
+          - ap-south-1
+  Name:
+    Description:
+      zh: Stack 名字
+      en: Stack Name
+    Required: true
+    Type:
+      - String
+  Template:
+    Description:
+      zh: Template 本地路径
+      en: Template local dir
+    Required: true
+    Type:
+      - String
+  Policy:
+    Description:
+      zh: Policy 配置
+      en: Policy config
+    Required: false
+    Type:
+      - Struct:
+          Body:
+            Description:
+              zh: 包含资源栈策略主体的结构，长度为1~16,384个字节。
+              en: It contains the structure of the resource stack policy body, with a length of 1-16384 bytes.
+            Required: false
+            Example: '{"Statement": [{"Action": "Update:*", "Resource": "*", "Effect": "Allow", "Principal": "*"}]}'
+            Type:
+              - String
+          Url:
+            Description:
+              zh: 包含资源栈策略的文件的位置。 URL必须指向位于Web服务器（HTTP或HTTPS）或阿里云OSS存储桶（例如：oss://ros/stack-policy/demo、oss://ros/stack-policy/demo?RegionId=cn-hangzhou）中的策略，策略文件最大长度为16,384个字节。 如未指定OSS地域，默认与接口参数RegionId相同。
+              en: The location of the file containing the resource stack policy. The URL must point to the web server (HTTP or HTTPS) or Alibaba cloud OSS bucket (for example： oss://ros/stack-policy/demo , oss://ros/stack-policy/demo?RegionId=cn-hangzhou ）The maximum length of the policy file is 16384 bytes. It is the same as the default regionid parameter, if not specified.
+            Required: false
+            Example: oss://ros-stack-policy/demo
+            Type:
+              - String
