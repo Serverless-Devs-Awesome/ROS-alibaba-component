@@ -1,4 +1,4 @@
-MyFunctionDemo:
+MyROSDemo:
   Component: ros
   Provider: alibaba
   Access: release
