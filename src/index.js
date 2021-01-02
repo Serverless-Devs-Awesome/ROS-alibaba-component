@@ -26,6 +26,9 @@ class MyComponent extends Component {
             description: `Usage: s ${inputs.Project.ProjectName} deploy [command]`,
         })
 
+        // 获取密钥信息
+        inputs.Credentials = await this.credentials(inputs)
+
         const client = await this.getClient(inputs.Credentials)
 
         await this.init()
@@ -133,6 +136,9 @@ class MyComponent extends Component {
         this.help(inputs, {
             description: `Usage: s ${inputs.Project.ProjectName} remove [command]`,
         })
+
+        // 获取密钥信息
+        inputs.Credentials = await this.credentials(inputs)
 
         const client = await this.getClient(inputs.Credentials)
 
